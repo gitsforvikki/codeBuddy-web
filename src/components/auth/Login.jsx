@@ -1,23 +1,14 @@
 import { useState } from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../utils/userSlice/userReducer";
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("rohit@gmail.com");
   const [password, setPassword] = useState("rohit@123");
 
-  const handleLoginReqest = async () => {
-    try {
-      const res = await axios.post(
-        "http://localhost:3000/auth/login",
-        {
-          email,
-          password,
-        },
-        { withCredentials: true } //for set cookie in the broswer
-      );
-    } catch (err) {
-      console.error(err);
-    }
+  const handleLoginReqest = () => {
+    dispatch(loginUser({ email, password }));
   };
   return (
     <div className="flex justify-center mt-6 lg:mt-16">
