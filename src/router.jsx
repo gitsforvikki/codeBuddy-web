@@ -3,16 +3,25 @@ import { ErrorPage } from "./error/ErrorPage";
 import { RootLayout } from "./RootLayout";
 import { HomePage } from "./components/Home";
 import { LoginPage } from "./components/auth/Login";
+import { Profile } from "./components/user/Profle";
+import ProtectedLayout from "./ProtectedLayout";
 
-//this is the modernway of routing
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
+    element: <RootLayout />, // global ui
+    errorElement: <ErrorPage />, //global error boundry
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "login", element: <LoginPage /> },
+      {
+        path: "/login", //public route
+        element: <LoginPage />,
+      },
+      {
+        element: <ProtectedLayout />, // 🔒 auth check, private routes
+        children: [
+          { index: true, element: <HomePage /> },
+          { path: "profile", element: <Profile /> },
+        ],
+      },
     ],
   },
 ]);

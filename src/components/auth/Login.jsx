@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../utils/userSlice/userReducer";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("rohit@gmail.com");
   const [password, setPassword] = useState("rohit@123");
 
+  const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+
   const handleLoginReqest = () => {
+    if (user) return;
     dispatch(loginUser({ email, password }));
   };
   return (
