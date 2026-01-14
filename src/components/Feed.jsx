@@ -8,7 +8,6 @@ export const FeedPage = () => {
   const { feed } = useSelector((state) => state.feed);
   useEffect(() => {
     dispatch(getFeed());
-    console.log("feed page");
   }, []);
 
   return (

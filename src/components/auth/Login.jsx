@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("rohit@gmail.com");
-  const [password, setPassword] = useState("rohit@123");
+  const [email, setEmail] = useState("virat@gmail.com");
+  const [password, setPassword] = useState("virat@123");
 
   const handleLoginReqest = () => {
     if (user) return;

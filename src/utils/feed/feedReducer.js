@@ -9,7 +9,6 @@ export const getFeed = createAsyncThunk(
       const res = await axios.get(`${BASE_URL}/user/feed`, {
         withCredentials: true,
       });
-      console.log(res.data);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || "Feed not fetched");

@@ -1,6 +1,6 @@
 export const FooterPage = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10 fixed bottom-0">
+    <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10 sticky bottom-0">
       <nav className="grid grid-flow-col gap-4">
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
