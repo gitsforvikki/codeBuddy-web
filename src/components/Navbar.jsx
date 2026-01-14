@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Links } from "react-router-dom";
+import { Link, Links, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constant";
 import { logout } from "../utils/userSlice/userSlice";
 import { logoutUser } from "../utils/userSlice/userReducer";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
   const handleLogout = async () => {
     dispatch(logoutUser());
+    navigate("/login");
   };
   return (
     <div className="navbar bg-base-300 shadow-sm">

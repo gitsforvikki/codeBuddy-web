@@ -11,13 +11,12 @@ export const RootLayout = () => {
   const { user, error } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getProfile());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error === "UNAUTHORIZED") {
       navigate("/login");
     }
-    
   }, [error, navigate]);
 
   return (

@@ -9,6 +9,11 @@ export const LoginPage = () => {
   const [email, setEmail] = useState("rohit@gmail.com");
   const [password, setPassword] = useState("rohit@123");
 
+  const handleLoginReqest = () => {
+    if (user) return;
+    dispatch(loginUser({ email, password }));
+  };
+
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
     if (user) {
@@ -16,10 +21,6 @@ export const LoginPage = () => {
     }
   }, [navigate, user]);
 
-  const handleLoginReqest = () => {
-    if (user) return;
-    dispatch(loginUser({ email, password }));
-  };
   return (
     <div className="flex justify-center mt-6 lg:mt-16">
       <div className="card bg-base-200 w-96 shadow-sm">
