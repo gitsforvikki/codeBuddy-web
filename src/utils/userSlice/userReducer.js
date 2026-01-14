@@ -50,7 +50,7 @@ export const getProfile = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
   "/profile/update",
-  async (data, { rejectWithValue }) => {
+  async (data, { dispatch, rejectWithValue }) => {
     try {
       const res = await axios.patch(`${BASE_URL}/profile/update`, data, {
         withCredentials: true,
@@ -58,10 +58,11 @@ export const updateProfile = createAsyncThunk(
       if (res.ok) {
         dispatch(getProfile());
       }
-      console.log(res.data);
       return res.data;
     } catch (err) {
-      return rejectWithValue(err.response?.data || "Profile Update failed");
+      return rejectWithValue(
+        err.response?.data?.message || "Profile update failed"
+      );
     }
   }
 );

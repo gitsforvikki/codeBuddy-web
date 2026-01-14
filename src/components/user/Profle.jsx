@@ -2,10 +2,15 @@ import { useSelector } from "react-redux";
 import { EditProfile } from "./EditProfile";
 
 export const Profile = () => {
-  const { user } = useSelector((state) => state.user);
+  const { user, loading, error, success } = useSelector((state) => state.user);
   return (
     <>
-      <EditProfile user={user} />
+      <EditProfile
+        user={user}
+        error={error}
+        loading={loading}
+        success={success}
+      />
     </>
   );
 };

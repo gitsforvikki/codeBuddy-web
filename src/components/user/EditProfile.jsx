@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FeedCard } from "../cards/FeedCard";
 import { useDispatch } from "react-redux";
 import { getProfile, updateProfile } from "../../utils/userSlice/userReducer";
 
-export const EditProfile = ({ user }) => {
+export const EditProfile = ({ user, error, loading, success }) => {
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
@@ -17,6 +17,14 @@ export const EditProfile = ({ user }) => {
     setGender(value);
     setOpen(false);
   }
+  useEffect(() => {
+    if (success) {
+      alert("Profile updated successfully");
+    }
+    if (error) {
+      alert(error);
+    }
+  }, [success, error]);
 
   const handleUpdateProfile = () => {
     dispatch(updateProfile({ about, photoUrl, age, gender }));
@@ -35,6 +43,7 @@ export const EditProfile = ({ user }) => {
                     type="text"
                     className="input"
                     value={firstName}
+                    disabled
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </fieldset>
@@ -44,6 +53,7 @@ export const EditProfile = ({ user }) => {
                     type="text"
                     className="input"
                     value={lastName}
+                    disabled
                     onChange={(e) => setLastName(e.target.value)}
                   />
                 </fieldset>

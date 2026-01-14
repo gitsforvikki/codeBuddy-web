@@ -9,6 +9,7 @@ import {
 const initialState = {
   user: null,
   loading: false,
+  success: false,
   error: null,
 };
 
@@ -50,14 +51,17 @@ const userSlice = createSlice({
         state.user = null;
       })
       .addCase(updateProfile.pending, (state) => {
-        (state.loading = true), (state.error = null);
+        (state.loading = true), (state.error = null), (state.success = false);
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
-        (state.loading = false), (state.user = action.payload);
+        (state.loading = false),
+          (state.user = action.payload),
+          (state.success = true);
+        state.error = null;
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        (state.success = false), (state.error = action.payload);
       });
   },
 });
