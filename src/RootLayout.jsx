@@ -17,14 +17,12 @@ export const RootLayout = () => {
     if (error === "UNAUTHORIZED") {
       navigate("/login");
     }
-    if (user) {
-      navigate("/");
-    }
+    
   }, [error, navigate]);
 
   return (
     <>
-      <Navbar /> {/* 👈 ALWAYS visible */}
+      <Navbar />
       <main>
         <Outlet />
       </main>

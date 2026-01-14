@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import { BASE_URL } from "../constant";
 import { logout } from "../utils/userSlice/userSlice";
 import { logoutUser } from "../utils/userSlice/userReducer";
@@ -44,9 +44,6 @@ const Navbar = () => {
                     Profile
                     <span className="badge">New</span>
                   </Link>
-                </li>
-                <li>
-                  <a>Settings</a>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
