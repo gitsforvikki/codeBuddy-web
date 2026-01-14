@@ -31,6 +31,7 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+
 export const getProfile = createAsyncThunk(
   "/profile/view",
   async (_, { rejectWithValue }) => {
@@ -38,6 +39,7 @@ export const getProfile = createAsyncThunk(
       const res = await axios.get(`${BASE_URL}/profile/view`, {
         withCredentials: true,
       });
+      console.log("get profile" + JSON.stringify(res.data));
       return res.data;
     } catch (err) {
       if (err.response?.status === 401) {
@@ -58,6 +60,8 @@ export const updateProfile = createAsyncThunk(
       if (res.ok) {
         dispatch(getProfile());
       }
+      console.log("update profile" + JSON.stringify(res.data));
+
       return res.data;
     } catch (err) {
       return rejectWithValue(

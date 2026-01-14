@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { FeedCard } from "../cards/FeedCard";
 import { useDispatch } from "react-redux";
-import { getProfile, updateProfile } from "../../utils/userSlice/userReducer";
+import { updateProfile } from "../../utils/userSlice/userReducer";
+import toast from "react-hot-toast";
 
 export const EditProfile = ({ user, error, loading, success }) => {
   const dispatch = useDispatch();
@@ -19,10 +20,10 @@ export const EditProfile = ({ user, error, loading, success }) => {
   }
   useEffect(() => {
     if (success) {
-      alert("Profile updated successfully");
+      toast.success("Profile updated successfully");
     }
     if (error) {
-      alert(error);
+      toast.error(error);
     }
   }, [success, error]);
 
