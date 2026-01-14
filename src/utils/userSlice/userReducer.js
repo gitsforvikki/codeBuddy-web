@@ -16,6 +16,21 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+//logout user
+export const logoutUser = createAsyncThunk(
+  "/auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post(
+        `${BASE_URL}/auth/logout`,
+        {},
+        { withCredentials: true }
+      );
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Login failed");
+    }
+  }
+);
 export const getProfile = createAsyncThunk(
   "/profile/view",
   async (_, { rejectWithValue }) => {

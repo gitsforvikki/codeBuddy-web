@@ -1,20 +1,15 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../constant";
+import { logout } from "../utils/userSlice/userSlice";
+import { logoutUser } from "../utils/userSlice/userReducer";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleLogout = async () => {
-    try {
-      await axios.post(
-        `${BASE_URL}/auth/logout`,
-        {},
-        { withCredentials: true }
-      );
-    } catch (err) {
-      console.error(err);
-    }
+    dispatch(logoutUser());
   };
   return (
     <div className="navbar bg-base-300 shadow-sm">
