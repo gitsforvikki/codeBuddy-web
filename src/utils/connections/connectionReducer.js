@@ -36,3 +36,23 @@ export const fetchConnectionRequest = createAsyncThunk(
     }
   }
 );
+
+// review request
+export const reviewRequest = createAsyncThunk(
+  "/request/review",
+  async ({ status, requestId }, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/request/review/${status}/${requestId}`,
+        {},
+        { withCredentials: true }
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(
+        err.response.data?.message || `${status} request failed.`
+      );
+    }
+  }
+);

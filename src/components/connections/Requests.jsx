@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchConnectionRequest } from "../../utils/connections/connectionReducer";
+import {
+  fetchConnectionRequest,
+  reviewRequest,
+} from "../../utils/connections/connectionReducer";
 
 export const RequestPage = () => {
   const dispatch = useDispatch();
@@ -12,6 +15,10 @@ export const RequestPage = () => {
     (state) => state.connection
   );
 
+  const handleAccept = ({ status, requestId }) => {
+    console.log(status);
+    dispatch(reviewRequest({ status, requestId }));
+  };
   if (!requests)
     return <h2 className="text-red-400 font-medium">Something went wrong</h2>;
 
@@ -52,8 +59,28 @@ export const RequestPage = () => {
                     <p>{about}</p>
                   </div>
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Reject</button>
-                    <button className="btn btn-secondary">Accept</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() =>
+                        handleReject({
+                          status: "rejected",
+                          requestId: request._id,
+                        })
+                      }
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() =>
+                        handleAccept({
+                          status: "accepted",
+                          requestId: request._id,
+                        })
+                      }
+                    >
+                      Accept
+                    </button>
                   </div>
                 </div>
               );
