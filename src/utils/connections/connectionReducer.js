@@ -56,3 +56,38 @@ export const reviewRequest = createAsyncThunk(
     }
   }
 );
+
+//feed
+export const getFeed = createAsyncThunk(
+  "/user/feed",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/user/feed`, {
+        withCredentials: true,
+      });
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Feed not fetched");
+    }
+  }
+);
+
+// send request or reject request
+export const sendRequest = createAsyncThunk(
+  "/request/send",
+  async ({ status, requestId }, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/request/send/${status}/${requestId}`,
+        {},
+        { withCredentials: true }
+      );
+      console.log("send req:--" + JSON.stringify(res.data));
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(
+        err.response.data?.message || `${status} request failed.`
+      );
+    }
+  }
+);

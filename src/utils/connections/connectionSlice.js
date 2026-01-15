@@ -2,12 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchConnectionRequest,
   getAllConnection,
+  getFeed,
   reviewRequest,
+  sendRequest,
 } from "./connectionReducer";
 
 const initialState = {
   connections: null,
   requests: null,
+  feed: null,
   loading: false,
   error: false,
   success: false,
@@ -52,9 +55,31 @@ export const connectionSlice = createSlice({
         );
       })
       .addCase(reviewRequest.rejected, (state, action) => {
+        (state.loading = false), (state.error = action.payload);
+      })
+      .addCase(getFeed.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getFeed.fulfilled, (state, action) => {
         (state.loading = false),
-          (state.requests = nul),
-          (state.error = action.payload);
+          (state.feed = action.payload.data),
+          (state.error = null);
+      })
+      .addCase(getFeed.rejected, (state, action) => {
+        (state.loading = false), (state.error = action.payload);
+      })
+      .addCase(sendRequest.pending, (state) => {
+        (state.loading = true), (state.success = false);
+      })
+      .addCase(sendRequest.fulfilled, (state, action) => {
+        (state.loading = false), (state.success = true), (state.error = null);
+        state.feed = state.feed?.filter(
+          (each) => each._id !== action.payload.data.toUserId
+        );
+
+      })
+      .addCase(sendRequest.rejected, (state, action) => {
+        (state.loading = false), (state.error = action.payload);
       });
   },
 });

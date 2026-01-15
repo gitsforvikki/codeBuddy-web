@@ -1,5 +1,5 @@
-export const FeedCard = ({ user }) => {
-  const { firstName, lastName, age, about, gender, photoUrl } = user;
+export const FeedCard = ({ user, onInterested, onIgnored }) => {
+  const { Id, firstName, lastName, age, about, gender, photoUrl } = user;
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
       <figure>
@@ -13,8 +13,12 @@ export const FeedCard = ({ user }) => {
         </h2>
         <span>{about}</span>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Ingored</button>
-          <button className="btn btn-secondary">Intersted</button>
+          <button className="btn btn-primary" onClick={onIgnored}>
+            Ingored
+          </button>
+          <button className="btn btn-secondary" onClick={onInterested}>
+            Intersted
+          </button>
         </div>
       </div>
     </div>
