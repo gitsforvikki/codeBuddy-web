@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../utils/userSlice/userReducer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const LoginPage = () => {
   }, [navigate, user]);
 
   return (
-    <div className="flex justify-center mt-6 lg:mt-16">
+    <div className="flex justify-center mt-6 lg:mt-16 mb-10 lg:mb-20">
       <div className="card bg-base-200 w-96 shadow-sm">
         <div className="card-body">
           <h2 className="card-title">Login Here</h2>
@@ -54,6 +54,9 @@ export const LoginPage = () => {
             </button>
           </div>
         </div>
+        <Link to="/signup" className="text-center text-blue-500 text-sm mb-4">
+          New user? create an account!
+        </Link>
       </div>
     </div>
   );
