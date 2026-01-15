@@ -24,10 +24,12 @@ export const RegisterPage = () => {
 
   return (
     <>
-      <div className="flex justify-center mt-6 lg:mt-16">
+      <div className="flex justify-center mt-6 lg:mt-16 mb-10 lg:mb-20">
         <div className="card bg-base-200 w-96 shadow-sm">
           <div className="card-body">
-            <h2 className="card-title">Create Account</h2>
+            <h2 className="text-2xl font-semibold text-center">
+              Create An Account
+            </h2>
             <div className="flex flex-col gap-y-3 mt-6">
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">First Name</legend>
