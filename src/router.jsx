@@ -6,6 +6,7 @@ import { Profile } from "./components/user/Profle";
 import ProtectedLayout from "./ProtectedLayout";
 import { FeedPage } from "./components/Feed";
 import { Connections } from "./components/connections/Connection";
+import { RequestPage } from "./components/connections/Requests";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
           { index: true, element: <FeedPage /> },
           { path: "profile", element: <Profile /> },
           { path: "connections", element: <Connections /> },
+          { path: "requests", element: <RequestPage /> },
         ],
       },
     ],

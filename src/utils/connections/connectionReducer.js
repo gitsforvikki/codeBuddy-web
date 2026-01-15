@@ -13,7 +13,25 @@ export const getAllConnection = createAsyncThunk(
       return res.data;
     } catch (err) {
       return rejectWithValue(
-        err.response?.data?.message || "Profile update failed"
+        err.response?.data?.message || "Fetch connections failed"
+      );
+    }
+  }
+);
+
+//fetch connection request
+
+export const fetchConnectionRequest = createAsyncThunk(
+  "/user/requests/pending",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/user/requests/pending`, {
+        withCredentials: true,
+      });
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(
+        err.response.data?.message || "Fetch Request failed. "
       );
     }
   }
