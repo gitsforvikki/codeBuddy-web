@@ -16,9 +16,13 @@ export const RequestPage = () => {
   );
 
   const handleAccept = ({ status, requestId }) => {
-    console.log(status);
     dispatch(reviewRequest({ status, requestId }));
   };
+
+  const handleReject = ({ status, requestId }) => {
+    dispatch(reviewRequest({ status, requestId }));
+  };
+
   if (!requests)
     return <h2 className="text-red-400 font-medium">Something went wrong</h2>;
 

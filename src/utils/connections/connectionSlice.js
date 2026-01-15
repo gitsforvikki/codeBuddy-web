@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchConnectionRequest, getAllConnection, reviewRequest } from "./connectionReducer";
+import {
+  fetchConnectionRequest,
+  getAllConnection,
+  reviewRequest,
+} from "./connectionReducer";
 
 const initialState = {
   connections: null,
@@ -43,11 +47,13 @@ export const connectionSlice = createSlice({
       })
       .addCase(reviewRequest.fulfilled, (state, action) => {
         (state.loading = false), (state.success = true), (state.error = null);
-        state.requests?.filter((each) => each._id !== action.payload._id);
+        state.requests = state.requests?.filter(
+          (each) => each._id !== action.payload.data._id
+        );
       })
       .addCase(reviewRequest.rejected, (state, action) => {
         (state.loading = false),
-          (state.connections = null),
+          (state.requests = nul),
           (state.error = action.payload);
       });
   },
