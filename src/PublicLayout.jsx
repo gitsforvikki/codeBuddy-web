@@ -1,16 +1,16 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const ProtectedLayout = () => {
+const PublicLayout = () => {
   const { user, loading } = useSelector((state) => state.user);
 
-  if (loading) return null; // or spinner
+  if (loading) return null; 
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
+  if (user) {
+    return <Navigate to="/" replace />;
   }
 
   return <Outlet />;
 };
 
-export default ProtectedLayout;
+export default PublicLayout;
