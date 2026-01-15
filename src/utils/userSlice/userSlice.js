@@ -3,6 +3,7 @@ import {
   getProfile,
   loginUser,
   logoutUser,
+  registerUser,
   updateProfile,
 } from "./userReducer";
 
@@ -26,6 +27,16 @@ const userSlice = createSlice({
         (state.loading = false), (state.user = action.payload);
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(registerUser.pending, (state) => {
+        (state.loading = true), (state.error = null);
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        (state.loading = false), (state.error = null), (state.success = true);
+      })
+      .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

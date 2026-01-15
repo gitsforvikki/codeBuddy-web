@@ -2,6 +2,25 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../constant";
 
+//register user
+export const registerUser = createAsyncThunk(
+  "/auth/signup",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/auth/signup`, payload, {
+        withCredentials: true,
+      });
+     
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(
+        err.response?.data?.message || "Register user failed"
+      );
+    }
+  }
+);
+
+//login user
 export const loginUser = createAsyncThunk(
   "/auth/login",
   async (data, { rejectWithValue }) => {
@@ -32,6 +51,7 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+//get profile
 export const getProfile = createAsyncThunk(
   "/profile/view",
   async (_, { rejectWithValue }) => {
@@ -50,6 +70,7 @@ export const getProfile = createAsyncThunk(
   }
 );
 
+//update profile
 export const updateProfile = createAsyncThunk(
   "/profile/update",
   async (data, { dispatch, rejectWithValue }) => {

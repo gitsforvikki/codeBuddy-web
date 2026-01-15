@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("virat@gmail.com");
-  const [password, setPassword] = useState("virat@123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLoginReqest = () => {
     if (user) return;
@@ -30,9 +30,9 @@ export const LoginPage = () => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Email Id</legend>
               <input
-                type="text"
+                type="email"
                 className="input"
-                placeholder="Type here"
+                placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -42,7 +42,7 @@ export const LoginPage = () => {
               <input
                 type="password"
                 className="input"
-                placeholder="Type here"
+                placeholder="password@123"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
