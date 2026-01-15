@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import AuthInitializer from "./AuthInitializer";
 
 const ProtectedLayout = () => {
   const { user, loading } = useSelector((state) => state.user);
@@ -10,7 +11,12 @@ const ProtectedLayout = () => {
     return <Navigate to="/login" replace />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      {/* <AuthInitializer /> */}
+    </>
+  );
 };
 
 export default ProtectedLayout;

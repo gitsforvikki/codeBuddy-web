@@ -55,7 +55,7 @@ export const LoginPage = () => {
           </div>
         </div>
         <Link to="/signup" className="text-center text-blue-500 text-sm mb-4">
-          New user? create an account!
+          👉 New user? Create an account
         </Link>
       </div>
     </div>

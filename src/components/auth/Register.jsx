@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../utils/userSlice/userReducer";
 
 export const RegisterPage = () => {
@@ -27,7 +27,7 @@ export const RegisterPage = () => {
       <div className="flex justify-center mt-6 lg:mt-16">
         <div className="card bg-base-200 w-96 shadow-sm">
           <div className="card-body">
-            <h2 className="card-title">Login Here</h2>
+            <h2 className="card-title">Create Account</h2>
             <div className="flex flex-col gap-y-3 mt-6">
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">First Name</legend>
@@ -76,8 +76,8 @@ export const RegisterPage = () => {
               </button>
             </div>
           </div>
-          <Link to="/signup" className="text-center text-blue-500 text-sm mb-4">
-            New user? create an account!
+          <Link to="/login" className="text-center text-blue-500 text-sm mb-4">
+            👈 Already have an account? Login
           </Link>
         </div>
       </div>

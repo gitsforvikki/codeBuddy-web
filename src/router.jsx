@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
         element: <PublicLayout />,
         children: [
           { path: "/login", element: <LoginPage /> },
-          { path: "/register", element: <RegisterPage /> },
+          { path: "/signup", element: <RegisterPage /> },
         ],
       },
 
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
           { index: true, element: <FeedPage /> },
           { path: "profile", element: <Profile /> },
           { path: "connections", element: <Connections /> },
-          { path: "signup", element: <RequestPage /> },
+          { path: "requests", element: <RequestPage /> },
         ],
       },
     ],
