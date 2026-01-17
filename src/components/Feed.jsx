@@ -19,42 +19,29 @@ export const FeedPage = () => {
   };
   return (
     <>
-      <div>
-        {feed &&
-          feed.map((user) => (
-            <FeedCard
-              key={user._id}
-              user={user}
-              // handleRequestSent={() =>
-              //   handleRequestSent({
-              //     status: "interested",
-              //     requestId: user._id,
-              //   })
-              // }
-              onInterested={() =>
-                dispatch(
-                  sendRequest({
-                    status: "interested",
-                    requestId: user._id,
-                  })
-                )
-              }
-              // handleRequestIngored={() =>
-              //   handleRequestIngored({
-              //     status: "ignored",
-              //     requestId: user._id,
-              //   })
-              // }
-              onIgnored={() =>
-                dispatch(
-                  sendRequest({
-                    status: "interested",
-                    requestId: user._id,
-                  })
-                )
-              }
-            />
-          ))}
+      <div className="flex justify-center  mt-24">
+        {feed && (
+          <FeedCard
+            key={feed[0]._id}
+            user={feed[0]}
+            onInterested={() =>
+              dispatch(
+                sendRequest({
+                  status: "interested",
+                  requestId: feed[0]._id,
+                }),
+              )
+            }
+            onIgnored={() =>
+              dispatch(
+                sendRequest({
+                  status: "interested",
+                  requestId: feed[0]._id,
+                }),
+              )
+            }
+          />
+        )}
       </div>
     </>
   );
