@@ -17,6 +17,15 @@ export const FeedPage = () => {
   const handleRequestIngored = ({ status, requestId }) => {
     dispatch(sendRequest({ status, requestId }));
   };
+
+  if (!feed) return null;
+  if (feed?.length <= 0) {
+    return (
+      <h2 className="flex justify-center mt-32 text-gray-300 text-2xl italic">
+        New Guys are no more for connections
+      </h2>
+    );
+  }
   return (
     <>
       <div className="flex justify-center  mt-24">

@@ -58,6 +58,11 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/reset-password" className="justify-between">
+                    Reset password
+                  </Link>
+                </li>
+                <li>
                   <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>

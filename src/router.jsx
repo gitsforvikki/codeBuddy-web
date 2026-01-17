@@ -10,6 +10,7 @@ import { FeedPage } from "./components/Feed";
 import { Profile } from "./components/user/Profle";
 import { Connections } from "./components/connections/Connection";
 import { RequestPage } from "./components/connections/Requests";
+import { ResetPassword } from "./components/auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
           { path: "profile", element: <Profile /> },
           { path: "connections", element: <Connections /> },
           { path: "requests", element: <RequestPage /> },
+          { path: "reset-password", element: <ResetPassword /> },
         ],
       },
     ],
