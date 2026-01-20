@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../constant";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 //register user
 export const registerUser = createAsyncThunk(
@@ -10,14 +10,14 @@ export const registerUser = createAsyncThunk(
       const res = await axios.post(`${BASE_URL}/auth/signup`, payload, {
         withCredentials: true,
       });
-     
+
       return res.data;
     } catch (err) {
       return rejectWithValue(
-        err.response?.data?.message || "Register user failed"
+        err.response?.data?.message || "Register user failed",
       );
     }
-  }
+  },
 );
 
 //login user
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.response?.data || "Login failed");
     }
-  }
+  },
 );
 
 //logout user
@@ -43,12 +43,12 @@ export const logoutUser = createAsyncThunk(
       await axios.post(
         `${BASE_URL}/auth/logout`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
     } catch (err) {
       return rejectWithValue(err.response?.data || "Login failed");
     }
-  }
+  },
 );
 
 //get profile
@@ -66,7 +66,7 @@ export const getProfile = createAsyncThunk(
       }
       return rejectWithValue("Failed to load profile");
     }
-  }
+  },
 );
 
 //update profile
@@ -85,8 +85,8 @@ export const updateProfile = createAsyncThunk(
       return res.data;
     } catch (err) {
       return rejectWithValue(
-        err.response?.data?.message || "Profile update failed"
+        err.response?.data?.message || "Profile update failed",
       );
     }
-  }
+  },
 );

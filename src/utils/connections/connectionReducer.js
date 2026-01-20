@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../constant";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const getAllConnection = createAsyncThunk(
   "/user/connections",
