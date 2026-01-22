@@ -9,12 +9,13 @@ export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { user, error } = useSelector((state) => state.user);
+
   const handleLoginReqest = () => {
     if (user) return;
     dispatch(loginUser({ email, password }));
   };
 
-  const { user, error } = useSelector((state) => state.user);
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -59,7 +60,7 @@ export const LoginPage = () => {
         <Link to="/signup" className="text-center text-blue-500 text-sm mb-4">
           👉 New user? Create an account
         </Link>
-       
+
         <div className="text-center mb-4">
           {error ? (
             <Link to="" className="text-sm italic underline">
