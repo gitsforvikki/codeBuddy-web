@@ -76,7 +76,7 @@ export const FooterPage = () => {
         <div className="border-t border-base-300 pt-4 md:pt-6">
           <p className="text-xs md:text-sm">
             Copyright © {new Date().getFullYear()} - All rights reserved by
-            <span className="font-bold ml-1">devTinder</span>
+            <span className="font-bold ml-1">CodeBuddy</span>
           </p>
           <p className="text-xs text-base-content/60 mt-2">
             Connecting developers worldwide 💼

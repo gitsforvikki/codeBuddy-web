@@ -20,7 +20,7 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost text-lg md:text-xl font-bold hover:bg-base-200"
         >
-          💼 Devtinder
+          💼 CodeBuddy
         </Link>
       </div>
       <div className="flex gap-2 md:gap-4">

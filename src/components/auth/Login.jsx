@@ -28,7 +28,7 @@ export const LoginPage = () => {
         {/* Header Card */}
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">💼</div>
-          <h1 className="text-3xl md:text-4xl font-bold">Devtinder</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">CodeBuddy</h1>
           <p className="text-base-content/70 mt-2">
             Connect with developers worldwide
           </p>
@@ -133,7 +133,7 @@ export const LoginPage = () => {
         {/* Sign Up Link */}
         <div className="text-center mt-6">
           <p className="text-sm text-base-content/70">
-            New to Devtinder?{" "}
+            New to CodeBuddy?{" "}
             <Link to="/signup" className="link link-primary font-semibold">
               Create an account →
             </Link>

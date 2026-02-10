@@ -146,7 +146,7 @@ export const RegisterPage = () => {
         {/* Why Join */}
         <div className="mt-10">
           <h3 className="text-sm font-semibold mb-4 text-center">
-            Why Join Devtinder?
+            Why Join CodeBuddy?
           </h3>
           <div className="space-y-3">
             <div className="flex items-start gap-3">
