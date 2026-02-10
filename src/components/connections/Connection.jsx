@@ -69,7 +69,7 @@ export const Connections = () => {
       <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 max-w-3xl">
         {connections?.map((each) => {
           return (
-            <div key={each._id} className="w-full">
+            <div key={each?._id} className="w-full">
               <div className="card bg-base-300 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
                 <div className="card-body p-4 md:p-6">
                   <div className="flex flex-col sm:flex-row gap-4 items-start">
@@ -77,8 +77,8 @@ export const Connections = () => {
                     <div className="avatar shrink-0">
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl ring-2 ring-primary ring-offset-2">
                         <img
-                          src={each.photoUrl}
-                          alt={`${each.firstName}'s avatar`}
+                          src={each?.photoUrl}
+                          alt={`${each?.firstName}'s avatar`}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -87,30 +87,30 @@ export const Connections = () => {
                     {/* Info Section */}
                     <div className="flex-1 min-w-0 w-full">
                       <h2 className="card-title text-lg md:text-xl truncate">
-                        {each.firstName} {each.lastName}
+                        {each?.firstName} {each?.lastName}
                       </h2>
 
                       <div className="flex flex-wrap gap-2 mt-2 mb-4">
-                        {each.age && (
+                        {each?.age && (
                           <span className="badge badge-sm md:badge-md badge-primary">
-                            🎂 {each.age} yrs
+                            🎂 {each?.age} yrs
                           </span>
                         )}
-                        {each.gender && (
+                        {each?.gender && (
                           <span className="badge badge-sm md:badge-md badge-outline">
-                            {each.gender === "Male"
+                            {each?.gender === "Male"
                               ? "👨"
-                              : each.gender === "Female"
+                              : each?.gender === "Female"
                                 ? "👩"
                                 : "🧑"}{" "}
-                            {each.gender}
+                            {each?.gender}
                           </span>
                         )}
                       </div>
 
-                      {each.about && (
+                      {each?.about && (
                         <p className="text-sm md:text-base text-base-content/80 line-clamp-2">
-                          {each.about}
+                          {each?.about}
                         </p>
                       )}
                     </div>
@@ -118,7 +118,7 @@ export const Connections = () => {
 
                   {/* Action Button */}
                   <div className="card-actions justify-end mt-4 pt-4 border-t border-base-200">
-                    <Link to={`/chat/${each._id}`} className="w-full sm:w-auto">
+                    <Link to={`/chat/${each?._id}`} className="w-full sm:w-auto">
                       <button className="btn btn-secondary btn-sm md:btn-md w-full sm:w-auto gap-2">
                         <svg
                           className="w-5 h-5"
