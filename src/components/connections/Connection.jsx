@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllConnection } from "../../utils/connections/connectionReducer";
+import { Link } from "react-router-dom";
 
 export const Connections = () => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export const Connections = () => {
     dispatch(getAllConnection());
   }, [dispatch]);
   const { connections, loading, error, success } = useSelector(
-    (state) => state.connection
+    (state) => state.connection,
   );
   return (
     <>
@@ -21,7 +22,11 @@ export const Connections = () => {
               <div key={each._id} className="w-1/2">
                 <div className="rounded-xl bg-base-300 w-full shadow-sm flex p-1">
                   <div className="">
-                    <img src={each.photoUrl} alt="Photo" className="rounded-2xl w-16 h-16" />
+                    <img
+                      src={each.photoUrl}
+                      alt="Photo"
+                      className="rounded-2xl w-16 h-16"
+                    />
                   </div>
                   <div className="card-body">
                     <h2 className="card-title text-xl">
@@ -32,7 +37,9 @@ export const Connections = () => {
                       <h3>{each.gender && <span>| {each.gender}</span>}</h3>
                     </div>
                     <div className="card-actions justify-end">
-                      <button className="btn btn-secondary">Chat</button>
+                      <Link to={`/chat/${each._id}`}>
+                        <button className="btn btn-secondary">Chat</button>
+                      </Link>
                     </div>
                   </div>
                 </div>

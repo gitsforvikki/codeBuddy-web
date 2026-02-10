@@ -11,6 +11,8 @@ import { Profile } from "./components/user/Profle";
 import { Connections } from "./components/connections/Connection";
 import { RequestPage } from "./components/connections/Requests";
 import { ResetPassword } from "./components/auth/ResetPassword";
+import { ChatPage } from "./components/chat/Chat";
+import { Membership } from "./components/membership/Membership";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,8 @@ export const router = createBrowserRouter([
           { path: "connections", element: <Connections /> },
           { path: "requests", element: <RequestPage /> },
           { path: "reset-password", element: <ResetPassword /> },
+          { path: "chat/:withUserId", element: <ChatPage /> },
+          { path: "premium", element: <Membership /> },
         ],
       },
     ],

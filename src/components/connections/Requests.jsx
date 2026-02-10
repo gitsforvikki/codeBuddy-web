@@ -12,7 +12,7 @@ export const RequestPage = () => {
   }, [dispatch]);
 
   const { requests, loading, error, success } = useSelector(
-    (state) => state.connection
+    (state) => state.connection,
   );
 
   const handleAccept = ({ status, requestId }) => {
@@ -40,7 +40,7 @@ export const RequestPage = () => {
           {requests &&
             requests.map((request) => {
               const { _id, firstName, lastName, age, photoUrl, gender, about } =
-                request.fromUserId;
+                request.fromUserId || {};
               return (
                 <div key={_id} className="w-1/2 bg-base-300 rounded p-4">
                   <div className="flex flex-col gap-y-3">
