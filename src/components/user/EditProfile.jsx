@@ -4,21 +4,9 @@ import { useDispatch } from "react-redux";
 import { updateProfile } from "../../utils/userSlice/userReducer";
 import toast from "react-hot-toast";
 
-// Dummy user data for visual demonstration
-const DUMMY_USER = {
-  firstName: "John",
-  lastName: "Doe",
-  photoUrl:
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-  age: 26,
-  about:
-    "Full-stack developer passionate about building amazing web experiences. Coffee lover ☕",
-  gender: "Male",
-};
-
 export const EditProfile = ({ user, error, loading, success }) => {
   const dispatch = useDispatch();
-  const userData = user || DUMMY_USER;
+  const userData = user;
 
   const [firstName, setFirstName] = useState(userData.firstName);
   const [lastName, setLastName] = useState(userData.lastName);
