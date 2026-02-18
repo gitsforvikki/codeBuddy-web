@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AuthInitializer from "./AuthInitializer";
+import Spinner from "./utils/Spinner";
 
 const ProtectedLayout = () => {
-  const { user, loading } = useSelector((state) => state.user);
+  const { user, authLoading } = useSelector((state) => state.user);
 
-  if (loading) return null; // or spinner
+  if (authLoading) return <Spinner size={50} />;
 
   if (!user) {
     return <Navigate to="/login" replace />;

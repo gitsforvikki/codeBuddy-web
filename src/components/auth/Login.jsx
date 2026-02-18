@@ -8,11 +8,13 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const { user, error } = useSelector((state) => state.user);
 
   const handleLoginReqest = () => {
     if (user) return;
+    setSubmitted(true);
     dispatch(loginUser({ email, password }));
   };
 
@@ -44,7 +46,7 @@ export const LoginPage = () => {
             <div className="divider m-0" />
 
             {/* Error Alert */}
-            {error && (
+            {error && submitted && (
               <div className="alert alert-error text-sm">
                 <svg
                   className="stroke-current shrink-0 h-6 w-6"
@@ -117,7 +119,7 @@ export const LoginPage = () => {
             </button>
 
             {/* Forgot Password */}
-            {error && (
+            {error && submitted && (
               <div className="text-center">
                 <Link
                   to="/reset-password"

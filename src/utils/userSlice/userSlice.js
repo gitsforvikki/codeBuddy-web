@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   user: null,
+  authLoading: true,
   loading: false,
   success: false,
   error: null,
@@ -21,33 +22,33 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
-        (state.loading = true), (state.error = null);
+        ((state.loading = true), (state.error = null));
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        (state.loading = false), (state.user = action.payload);
+        ((state.loading = false), (state.user = action.payload));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
       .addCase(registerUser.pending, (state) => {
-        (state.loading = true), (state.error = null);
+        ((state.loading = true), (state.error = null));
       })
       .addCase(registerUser.fulfilled, (state, action) => {
-        (state.loading = false), (state.error = null), (state.success = true);
+        ((state.loading = false), (state.error = null), (state.success = true));
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
       .addCase(getProfile.pending, (state) => {
-        (state.loading = true), (state.error = null);
+        ((state.authLoading = true), (state.error = null));
       })
       .addCase(getProfile.fulfilled, (state, action) => {
-        (state.loading = false), (state.user = action.payload.data);
+        ((state.authLoading = false), (state.user = action.payload.data));
       })
       .addCase(getProfile.rejected, (state, action) => {
-        state.loading = false;
+        state.authLoading = false;
         state.error = action.payload;
       })
       .addCase(logoutUser.pending, (state) => {
@@ -62,17 +63,17 @@ const userSlice = createSlice({
         state.user = null;
       })
       .addCase(updateProfile.pending, (state) => {
-        (state.loading = true), (state.error = null), (state.success = false);
+        ((state.loading = true), (state.error = null), (state.success = false));
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
-        (state.loading = false),
+        ((state.loading = false),
           (state.user = action.payload.data),
-          (state.success = true);
+          (state.success = true));
         state.error = null;
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.loading = false;
-        (state.success = false), (state.error = action.payload);
+        ((state.success = false), (state.error = action.payload));
       });
   },
 });
