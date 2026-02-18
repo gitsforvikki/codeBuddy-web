@@ -14,7 +14,7 @@ const ProtectedLayout = () => {
   return (
     <>
       <Outlet />
-      {/* <AuthInitializer /> */}
+      <AuthInitializer />
     </>
   );
 };
