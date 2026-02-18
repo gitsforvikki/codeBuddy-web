@@ -9,12 +9,6 @@ export const FooterPage = () => {
           <a className="link link-hover text-sm md:text-base hover:link-primary">
             Contact
           </a>
-          <a className="link link-hover text-sm md:text-base hover:link-primary">
-            Jobs
-          </a>
-          <a className="link link-hover text-sm md:text-base hover:link-primary">
-            Press kit
-          </a>
         </nav>
 
         <nav>

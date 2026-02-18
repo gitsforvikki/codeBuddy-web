@@ -9,4 +9,3 @@ export const Spinner = ({ size = 40 }) => {
   );
 };
 
-export default Spinner;

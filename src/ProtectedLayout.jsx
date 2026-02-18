@@ -1,7 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AuthInitializer from "./AuthInitializer";
-import Spinner from "./utils/Spinner";
+import { Spinner } from "./utils/Spinner";
 
 const ProtectedLayout = () => {
   const { user, authLoading } = useSelector((state) => state.user);
@@ -15,7 +14,6 @@ const ProtectedLayout = () => {
   return (
     <>
       <Outlet />
-      <AuthInitializer />
     </>
   );
 };
