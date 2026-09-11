@@ -7,7 +7,7 @@ export const RootLayout = () => {
   return (
     <>
 
-     <AuthInitializer /> 
+     {/* <AuthInitializer />  */}
       <Navbar />
       <main>
         <Outlet />

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllConnection } from "../../utils/connections/connectionReducer";
+import { getAllConnection } from "../../redux/connections/connectionReducer";
 import { Link } from "react-router-dom";
 
 export const Connections = () => {
@@ -118,7 +118,10 @@ export const Connections = () => {
 
                   {/* Action Button */}
                   <div className="card-actions justify-end mt-4 pt-4 border-t border-base-200">
-                    <Link to={`/chat/${each?._id}`} className="w-full sm:w-auto">
+                    <Link
+                      to={`/chat/${each?._id}`}
+                      className="w-full sm:w-auto"
+                    >
                       <button className="btn btn-secondary btn-sm md:btn-md w-full sm:w-auto gap-2">
                         <svg
                           className="w-5 h-5"

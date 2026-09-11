@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../utils/userSlice/userReducer";
+import { loginUser } from "../../redux/users/userReducer";
 import { Link, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {

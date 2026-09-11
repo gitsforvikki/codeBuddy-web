@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Links, useNavigate } from "react-router-dom";
-import { logout } from "../utils/userSlice/userSlice";
-import { logoutUser } from "../utils/userSlice/userReducer";
+import { logout } from "../redux/users/userSlice";
+import { logoutUser } from "../redux/users/userReducer";
 
 const Navbar = () => {
   const dispatch = useDispatch();

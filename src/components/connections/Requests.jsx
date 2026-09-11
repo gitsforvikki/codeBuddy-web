@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchConnectionRequest,
   reviewRequest,
-} from "../../utils/connections/connectionReducer";
+} from "../../redux/connections/connectionReducer";
 import { Link } from "react-router-dom";
 
 export const RequestPage = () => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FeedCard } from "../cards/FeedCard";
 import { useDispatch } from "react-redux";
-import { updateProfile } from "../../utils/userSlice/userReducer";
+import { updateProfile } from "../../redux/users/userReducer";
 import toast from "react-hot-toast";
 
 export const EditProfile = ({ user, error, loading, success }) => {

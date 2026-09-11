@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFeed, sendRequest } from "../utils/connections/connectionReducer";
+import { getFeed, sendRequest } from "../redux/connections/connectionReducer";
 import { FeedCard } from "./cards/FeedCard";
 
 export const FeedPage = () => {
