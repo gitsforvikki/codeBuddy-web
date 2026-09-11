@@ -7,10 +7,42 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+  const displayName = user?.firstName
+    ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
+    : "";
+
+  const membership = user?.membershipType?.toLowerCase() || "normal";
+  const membershipBadge = {
+    normal: {
+      label: "Normal",
+      icon: "○",
+      className: "border-base-content/20 bg-base-200 text-base-content/70",
+    },
+    silver: {
+      label: "Silver",
+      icon: "◆",
+      className:
+        "border-slate-300/70 bg-gradient-to-r from-slate-100 to-slate-300 text-slate-700 shadow-sm",
+    },
+    gold: {
+      label: "Gold",
+      icon: "✦",
+      className:
+        "border-amber-300/70 bg-gradient-to-r from-amber-100 via-yellow-200 to-amber-300 text-amber-900 shadow-sm",
+    },
+  }[membership] || {
+    label: membership,
+    icon: "◆",
+    className: "border-primary/30 bg-primary/10 text-primary",
+  };
 
   const handleLogout = async () => {
     dispatch(logoutUser());
     navigate("/login");
+  };
+
+  const closeDropdown = () => {
+    document.activeElement?.blur();
   };
 
   return (
@@ -27,8 +59,15 @@ const Navbar = () => {
         {user && (
           <div className="flex items-center gap-2 md:gap-4">
             <p className="hidden sm:inline text-sm md:text-base font-medium">
-              {user?.firstName}
+              {displayName}
             </p>
+            <span
+              className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-bold capitalize tracking-wide ${membershipBadge.className}`}
+              title={`${membershipBadge.label} membership`}
+            >
+              <span aria-hidden="true">{membershipBadge.icon}</span>
+              {membershipBadge.label}
+            </span>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -45,6 +84,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
+                onClick={closeDropdown}
                 className="dropdown-content menu menu-compact bg-base-100 rounded-lg z-50 mt-3 w-48 p-2 shadow-lg"
               >
                 <li>
