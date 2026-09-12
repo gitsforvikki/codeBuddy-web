@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSocketConnection } from "../../utils/socket/socket";
 import { ChatShimmer } from "../simmerUi/ShimmerUi";
+import { getAllConnection } from "../../redux/connections/connectionReducer";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const ChatPage = () => {
+  const dispatch = useDispatch();
   const { withUserId } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -19,6 +21,12 @@ export const ChatPage = () => {
   const withUser = connections?.find(
     (each) => parseInt(each._id) === parseInt(withUserId),
   );
+
+  useEffect(() => {
+    if (!connections) {
+      dispatch(getAllConnection());
+    }
+  }, [connections, dispatch]);
 
   useEffect(() => {
     if (!loggedInUserId || !withUserId) return;
