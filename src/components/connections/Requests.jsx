@@ -12,6 +12,7 @@ import {
   SearchIcon,
 } from "../icons/ConnectionIcons";
 import { DataErrorState } from "../../error/DataErrorState";
+import { RequestsShimmer } from "../simmerUi/ShimmerUi";
 
 const getInitials = (firstName = "", lastName = "") =>
   `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase() || "C";
@@ -33,18 +34,7 @@ export const RequestPage = () => {
   const handleReview = (status, requestId) =>
     dispatch(reviewRequest({ status, requestId }));
 
-  if (loading)
-    return (
-      <div className={pageClass}>
-        <div
-          className="flex min-h-[60vh] items-center justify-center"
-          role="status"
-          aria-label="Loading requests"
-        >
-          <span className="loading loading-spinner loading-lg text-[#b84432]" />
-        </div>
-      </div>
-    );
+  if (loading) return <RequestsShimmer />;
 
   if (error || !requests)
     return (

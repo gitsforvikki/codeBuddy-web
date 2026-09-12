@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllConnection } from "../../redux/connections/connectionReducer";
 import { ArrowIcon, ChatIcon, SearchIcon } from "../icons/ConnectionIcons";
 import { DataErrorState } from "../../error/DataErrorState";
+import { ConnectionsShimmer } from "../simmerUi/ShimmerUi";
 
 const getInitials = (firstName = "", lastName = "") =>
   `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase() || "C";
@@ -27,19 +28,8 @@ export const Connections = () => {
   }, [dispatch]);
 
   if (loading) {
-    return (
-      <div className={pageClass}>
-        <div
-          className="flex min-h-[60vh] items-center justify-center"
-          role="status"
-          aria-label="Loading connections"
-        >
-          <span className="loading loading-spinner loading-lg text-[#b84432]" />
-        </div>
-      </div>
-    );
+    return <ConnectionsShimmer />;
   }
-
 
   if (!connections?.length) {
     return (
@@ -69,7 +59,6 @@ export const Connections = () => {
     );
   }
 
-
   if (error) {
     return (
       <div className={pageClass}>
@@ -80,7 +69,6 @@ export const Connections = () => {
       </div>
     );
   }
-  
 
   const visibleConnections = connections.filter((connection) =>
     `${connection?.firstName || ""} ${connection?.lastName || ""}`

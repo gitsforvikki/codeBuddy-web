@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../redux/users/userReducer";
+import { MembershipShimmer } from "../simmerUi/ShimmerUi";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const Membership = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const { user, authLoading } = useSelector((state) => state.user);
+  if (authLoading || !user) return <MembershipShimmer />;
+
   const membershipType = user?.membershipType?.toLowerCase() || "normal";
   const canBuySilver = membershipType === "normal";
   const canBuyGold = membershipType === "normal" || membershipType === "silver";

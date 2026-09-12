@@ -2,12 +2,17 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { ResetPasswordShimmer } from "../simmerUi/ShimmerUi";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const ResetPassword = () => {
   const navigate = useNavigate();
+  const { authLoading, user } = useSelector((state) => state.user);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+
+  if (authLoading || !user) return <ResetPasswordShimmer />;
 
   const handleResetPassword = async () => {
     try {

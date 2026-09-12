@@ -5,14 +5,13 @@ import AuthInitializer from "./AuthInitializer";
 
 export const RootLayout = () => {
   return (
-    <>
-
-     {/* <AuthInitializer />  */}
+    <div className="flex min-h-screen flex-col">
+      {/* <AuthInitializer />  */}
       <Navbar />
-      <main>
+      <main className="flex-1 bg-gray-200">
         <Outlet />
       </main>
       <FooterPage />
-    </>
+    </div>
   );
 };

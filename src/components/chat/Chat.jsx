@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { createSocketConnection } from "../../utils/socket/socket";
+import { ChatShimmer } from "../simmerUi/ShimmerUi";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -93,6 +94,8 @@ export const ChatPage = () => {
   useEffect(() => {
     fetchChat();
   }, []);
+
+  if (!withUser) return <ChatShimmer />;
 
   return (
     <div className="min-h-[calc(100vh-72px)] bg-(--connections-cream) px-3 py-4 sm:px-6 md:py-8">

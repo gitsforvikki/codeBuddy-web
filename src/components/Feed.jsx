@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFeed, sendRequest } from "../redux/connections/connectionReducer";
 import { FeedCard } from "./cards/FeedCard";
+import { FeedShimmer } from "./simmerUi/ShimmerUi";
 
 export const FeedPage = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export const FeedPage = () => {
     dispatch(getFeed());
   }, []);
 
-  if (!feed) return null;
+  if (!feed) return <FeedShimmer />;
   if (feed?.length <= 0) {
     return (
       <div className="container mx-auto px-4 py-12 md:py-20">
