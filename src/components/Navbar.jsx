@@ -1,11 +1,13 @@
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Links, useNavigate } from "react-router-dom";
-import { logout } from "../redux/users/userSlice";
+import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../redux/users/userReducer";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
+  const accountMenuRef = useRef(null);
   const user = useSelector((state) => state.user.user);
   const displayName = user?.firstName
     ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
@@ -39,91 +41,163 @@ const Navbar = () => {
   const handleLogout = async () => {
     dispatch(logoutUser());
     navigate("/login");
+    setAccountMenuOpen(false);
   };
 
-  const closeDropdown = () => {
-    document.activeElement?.blur();
+  const toggleAccountMenu = () => {
+    setAccountMenuOpen((open) => !open);
   };
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!accountMenuRef.current?.contains(event.target)) {
+        setAccountMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, []);
 
   return (
-    <div className="navbar bg-base-300 shadow-md sticky top-0 z-50 px-4 md:px-6">
-      <div className="flex-1">
-        <Link
-          to="/"
-          className="btn btn-ghost text-lg md:text-xl font-bold hover:bg-base-200"
-        >
-          💼 CodeBuddy
-        </Link>
-      </div>
-      <div className="flex gap-2 md:gap-4">
-        {user && (
-          <div className="flex items-center gap-2 md:gap-4">
-            <p className="hidden sm:inline text-sm md:text-base font-medium">
-              {displayName}
-            </p>
-            <span
-              className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-bold capitalize tracking-wide ${membershipBadge.className}`}
-              title={`${membershipBadge.label} membership`}
-            >
-              <span aria-hidden="true">{membershipBadge.icon}</span>
-              {membershipBadge.label}
+    <header className="sticky top-0 z-50 border-b border-(--connections-line) bg-white/95 shadow-[0_6px_24px_rgba(23,32,51,0.07)] backdrop-blur">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-18 items-center justify-between gap-4">
+          <Link to="/" className="group flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-(--connections-ink) text-lg font-black text-white shadow-[0_8px_18px_rgba(23,32,51,0.18)] transition-transform group-hover:-rotate-6">
+              C
             </span>
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar hover:bg-base-200"
+            <span className="text-base font-black tracking-tight text-(--connections-ink) sm:text-lg">
+              CodeBuddy
+            </span>
+          </Link>
+
+          {user && (
+            <nav
+              className="hidden items-center gap-1 lg:flex"
+              aria-label="Desktop navigation"
+            >
+              <Link
+                to="/"
+                className="rounded-xl px-3 py-2 text-sm font-bold text-(--connections-muted) transition-colors hover:bg-[#f5e7df] hover:text-(--connections-coral)"
               >
-                <div className="w-10 rounded-full ring-2 ring-primary ring-offset-2">
-                  <img
-                    alt={user?.firstName}
-                    src={user.photoUrl}
-                    className="w-full h-full object-cover"
-                  />
+                Discover
+              </Link>
+              <Link
+                to="/connections"
+                className="rounded-xl px-3 py-2 text-sm font-bold text-(--connections-muted) transition-colors hover:bg-[#f5e7df] hover:text-(--connections-coral)"
+              >
+                Connections
+              </Link>
+              <Link
+                to="/requests"
+                className="rounded-xl px-3 py-2 text-sm font-bold text-(--connections-muted) transition-colors hover:bg-[#f5e7df] hover:text-(--connections-coral)"
+              >
+                Requests
+              </Link>
+              <Link
+                to="/premium"
+                className="ml-2 rounded-xl bg-(--connections-ink) px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-(--connections-blue)"
+              >
+                ✦ Go premium
+              </Link>
+            </nav>
+          )}
+
+          <div className="-mr-1 flex items-center gap-2 sm:mr-0 sm:gap-3">
+            {user && (
+              <>
+                <div ref={accountMenuRef} className="relative">
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-circle avatar h-12 w-12 p-1 hover:bg-[#f3f5f6]"
+                    aria-label="Open profile menu"
+                    aria-haspopup="menu"
+                    aria-controls="account-menu"
+                    aria-expanded={accountMenuOpen}
+                    onClick={toggleAccountMenu}
+                  >
+                    <div className="w-10 rounded-full ring-2 ring-(--connections-coral) ring-offset-2">
+                      <img
+                        alt={user?.firstName}
+                        src={user.photoUrl}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </button>
+                  {accountMenuOpen && (
+                    <div
+                      id="account-menu"
+                      role="menu"
+                      className="absolute right-0 top-[calc(100%+0.75rem)] z-60 w-60 rounded-2xl border border-(--connections-line) bg-white p-2 shadow-[0_18px_40px_rgba(23,32,51,0.16)]"
+                    >
+                      <div className="mb-2 border-b border-(--connections-line) px-3 pb-3">
+                        <p className="text-sm font-extrabold text-(--connections-ink)">
+                          {displayName}
+                        </p>
+                        <p className="mt-1 text-xs text-(--connections-muted)">
+                          {membershipBadge.label} member
+                        </p>
+                      </div>
+                      <nav
+                        aria-label="Account navigation"
+                        className="grid gap-1"
+                      >
+                        <Link
+                          to="/profile"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          <span>👤 Profile</span>
+                          <span className="badge badge-sm badge-primary">
+                            New
+                          </span>
+                        </Link>
+                        <Link
+                          to="/premium"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          👑 Premium
+                        </Link>
+                        <Link
+                          to="/connections"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          🤝 Connections
+                        </Link>
+                        <Link
+                          to="/requests"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          📥 Requests
+                        </Link>
+                        <Link
+                          to="/reset-password"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          🔐 Reset password
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={handleLogout}
+                          className="mt-1 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-error hover:bg-red-50"
+                        >
+                          🚪 Logout
+                        </button>
+                      </nav>
+                    </div>
+                  )}
                 </div>
-              </div>
-              <ul
-                tabIndex="-1"
-                onClick={closeDropdown}
-                className="dropdown-content menu menu-compact bg-base-100 rounded-lg z-50 mt-3 w-48 p-2 shadow-lg"
-              >
-                <li>
-                  <Link to="/profile" className="justify-between">
-                    <span>👤 Profile</span>
-                    <span className="badge badge-sm badge-primary">New</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/connections">
-                    <span>🤝 Connections</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/premium">
-                    <span>👑 Premium</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/requests">
-                    <span>📥 Requests</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/reset-password">
-                    <span>🔐 Reset Password</span>
-                  </Link>
-                </li>
-                <li>
-                  <a onClick={handleLogout} className="text-error">
-                    <span>🚪 Logout</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              </>
+            )}
           </div>
-        )}
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 export default Navbar;
