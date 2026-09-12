@@ -8,6 +8,11 @@ import { router } from "./router.jsx";
 import appStore from "./redux/appStore.js";
 import AuthInitializer from "./AuthInitializer.jsx";
 import "./index.css";
+import { registerSW } from "virtual:pwa-register";
+
+if (import.meta.env.PROD) {
+  registerSW({ immediate: true });
+}
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,5 +23,5 @@ createRoot(document.getElementById("root")).render(
 
       <Toaster position="top-right" />
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );
