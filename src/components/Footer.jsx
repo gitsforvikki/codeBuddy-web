@@ -1,23 +1,41 @@
 export const FooterPage = () => {
   return (
-    <footer className="footer footer-center bg-base-300 text-base-content p-4 md:p-6 lg:p-10 border-t border-base-200 mt-12 md:mt-16 lg:mt-20">
-      <div className="grid grid-flow-row gap-6 md:gap-8">
-        <nav className="grid grid-flow-col gap-3 md:gap-4 justify-center">
-          <a className="link link-hover text-sm md:text-base hover:link-primary">
-            About us
-          </a>
-          <a className="link link-hover text-sm md:text-base hover:link-primary">
-            Contact
-          </a>
-        </nav>
+    <footer className="mt-12 border-t border-[var(--connections-line)] bg-[var(--connections-ink)] text-white md:mt-16 lg:mt-20">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 md:py-14 lg:px-10">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_0.8fr_0.8fr] md:gap-12">
+          <div className="max-w-sm">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--connections-coral)] text-lg font-black shadow-[0_8px_20px_rgba(184,68,50,0.3)]">
+                C
+              </span>
+              <span className="text-xl font-black tracking-tight">CodeBuddy</span>
+            </div>
+            <p className="text-sm leading-6 text-slate-300 md:text-base">
+              A better way for developers to meet, share ideas, and build what
+              comes next together.
+            </p>
+          </div>
 
-        <nav>
-          <div className="grid grid-flow-col gap-4 md:gap-6 justify-center">
+          <nav aria-label="Footer navigation">
+            <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--connections-coral)]">
+              Explore
+            </h2>
+            <div className="flex flex-col items-start gap-3 text-sm text-slate-300">
+              <a className="transition-colors hover:text-white">About us</a>
+              <a className="transition-colors hover:text-white">Contact</a>
+            </div>
+          </nav>
+
+          <nav aria-label="Social links">
+            <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--connections-coral)]">
+              Stay connected
+            </h2>
+            <div className="flex gap-3">
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-slate-600 text-slate-300 transition-colors hover:border-[var(--connections-coral)] hover:bg-[var(--connections-coral)] hover:text-white"
               title="Follow us on Twitter"
             >
               <svg
@@ -34,7 +52,7 @@ export const FooterPage = () => {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-slate-600 text-slate-300 transition-colors hover:border-[var(--connections-coral)] hover:bg-[var(--connections-coral)] hover:text-white"
               title="Subscribe on YouTube"
             >
               <svg
@@ -51,7 +69,7 @@ export const FooterPage = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
+              className="grid h-11 w-11 place-items-center rounded-xl border border-slate-600 text-slate-300 transition-colors hover:border-[var(--connections-coral)] hover:bg-[var(--connections-coral)] hover:text-white"
               title="Like us on Facebook"
             >
               <svg
@@ -65,16 +83,14 @@ export const FooterPage = () => {
               </svg>
             </a>
           </div>
-        </nav>
+          </nav>
+        </div>
 
-        <div className="border-t border-base-300 pt-4 md:pt-6">
-          <p className="text-xs md:text-sm">
-            Copyright © {new Date().getFullYear()} - All rights reserved by
-            <span className="font-bold ml-1">CodeBuddy</span>
+        <div className="mt-10 flex flex-col gap-3 border-t border-slate-700 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} CodeBuddy. All rights reserved.
           </p>
-          <p className="text-xs text-base-content/60 mt-2">
-            Connecting developers worldwide 💼
-          </p>
+          <p>Connecting developers worldwide</p>
         </div>
       </div>
     </footer>
