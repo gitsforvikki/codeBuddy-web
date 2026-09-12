@@ -102,9 +102,11 @@ export const ChatPage = () => {
       <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[240px_minmax(0,0.88fr)] lg:justify-center">
         <aside className="hidden self-start rounded-3xl bg-(--connections-ink) p-6 text-white shadow-[0_18px_45px_rgba(23,32,51,0.14)] lg:flex lg:h-fit lg:flex-col lg:justify-between">
           <div>
-            <div className="mb-8 grid h-11 w-11 place-items-center rounded-2xl bg-(--connections-coral) text-xl font-black">
-              C
-            </div>
+            <img
+              src="/codebuddy-mark.svg"
+              alt=""
+              className="mb-8 h-11 w-11 rounded-2xl"
+            />
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f1a08f]">
               Your conversation
             </p>

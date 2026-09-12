@@ -30,9 +30,11 @@ export const RegisterPage = () => {
 
         <section className="relative px-2 py-4 md:px-6 lg:py-12">
           <div className="mb-10 flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-(--connections-ink) text-xl font-black text-white shadow-[0_10px_24px_rgba(23,32,51,0.2)]">
-              C
-            </span>
+            <img
+              src="/codebuddy-mark.svg"
+              alt=""
+              className="h-11 w-11 rounded-2xl shadow-[0_10px_24px_rgba(23,32,51,0.2)]"
+            />
             <span className="text-xl font-black tracking-tight text-(--connections-ink)">
               CodeBuddy
             </span>

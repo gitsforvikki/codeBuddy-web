@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title>CodeBuddy mark</title>
+  <desc>A stylized coral C with a bright connection spark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#263b5b"/>
+      <stop offset="1" stop-color="#172033"/>
+    </linearGradient>
+    <linearGradient id="coral" x1="18" y1="16" x2="48" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f1a08f"/>
+      <stop offset="1" stop-color="#b84432"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M45.5 19.5A18 18 0 1 0 45.5 44" fill="none" stroke="url(#coral)" stroke-linecap="round" stroke-width="8"/>
+  <path d="m47 11 1.8 5.2L54 18l-5.2 1.8L47 25l-1.8-5.2L40 18l5.2-1.8L47 11Z" fill="#f3c7a4"/>
+  <circle cx="47" cy="47" r="3" fill="#f1a08f"/>
+</svg>

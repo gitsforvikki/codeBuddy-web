@@ -41,9 +41,11 @@ export const ResetPassword = () => {
           <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border-[24px] border-[var(--connections-coral)]/30" />
           <div className="relative flex h-full flex-col justify-between gap-12">
             <div>
-              <div className="mb-8 grid h-12 w-12 place-items-center rounded-2xl bg-[var(--connections-coral)] text-xl font-black shadow-[0_10px_24px_rgba(184,68,50,0.3)]">
-                C
-              </div>
+              <img
+                src="/codebuddy-mark.svg"
+                alt=""
+                className="mb-8 h-12 w-12 rounded-2xl shadow-[0_10px_24px_rgba(184,68,50,0.3)]"
+              />
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#f1a08f]">
                 Account security
               </p>

@@ -64,9 +64,11 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-18 items-center justify-between gap-4">
           <Link to="/" className="group flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-(--connections-ink) text-lg font-black text-white shadow-[0_8px_18px_rgba(23,32,51,0.18)] transition-transform group-hover:-rotate-6">
-              C
-            </span>
+            <img
+              src="/codebuddy-mark.svg"
+              alt=""
+              className="h-10 w-10 transition-transform group-hover:-rotate-6"
+            />
             <span className="text-base font-black tracking-tight text-(--connections-ink) sm:text-lg">
               CodeBuddy
             </span>

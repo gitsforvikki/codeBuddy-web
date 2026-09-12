@@ -69,9 +69,11 @@ export const Membership = () => {
           <div className="relative grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div>
               <div className="mb-8 flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-(--connections-coral) text-xl font-black">
-                  C
-                </span>
+                <img
+                  src="/codebuddy-mark.svg"
+                  alt=""
+                  className="h-11 w-11 rounded-2xl"
+                />
                 <span className="text-xl font-black tracking-tight">
                   CodeBuddy Plus
                 </span>

@@ -33,9 +33,11 @@ export const LoginPage = () => {
           <div className="relative flex h-full min-h-130 flex-col justify-between">
             <div>
               <div className="mb-12 flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-(--connections-coral) text-xl font-black shadow-[0_10px_24px_rgba(184,68,50,0.35)]">
-                  C
-                </span>
+                <img
+                  src="/codebuddy-mark.svg"
+                  alt=""
+                  className="h-11 w-11 rounded-2xl shadow-[0_10px_24px_rgba(184,68,50,0.35)]"
+                />
                 <span className="text-xl font-black tracking-tight">
                   CodeBuddy
                 </span>

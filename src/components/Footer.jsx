@@ -5,9 +5,11 @@ export const FooterPage = () => {
         <div className="grid gap-10 md:grid-cols-[1.4fr_0.8fr_0.8fr] md:gap-12">
           <div className="max-w-sm">
             <div className="mb-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--connections-coral)] text-lg font-black shadow-[0_8px_20px_rgba(184,68,50,0.3)]">
-                C
-              </span>
+              <img
+                src="/codebuddy-mark.svg"
+                alt=""
+                className="h-10 w-10 rounded-xl shadow-[0_8px_20px_rgba(184,68,50,0.3)]"
+              />
               <span className="text-xl font-black tracking-tight">
                 CodeBuddy
               </span>
