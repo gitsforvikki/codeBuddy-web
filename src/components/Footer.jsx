@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
+
 export const FooterPage = () => {
   return (
-    <footer className="md:mt-16 lg:mt-20">
+    <footer className="mt-auto border-t border-slate-800 bg-(--connections-ink) text-white">
       <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 md:py-14 lg:px-10">
         <div className="grid gap-10 md:grid-cols-[1.4fr_0.8fr_0.8fr] md:gap-12">
           <div className="max-w-sm">
@@ -21,12 +24,19 @@ export const FooterPage = () => {
           </div>
 
           <nav aria-label="Footer navigation">
-            <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--connections-coral)]">
+            <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-(--connections-coral)">
               Explore
             </h2>
             <div className="flex flex-col items-start gap-3 text-sm text-slate-300">
-              <a className="transition-colors hover:text-white">About us</a>
-              <a className="transition-colors hover:text-white">Contact</a>
+              <Link to={ROUTES.HOME} className="transition-colors hover:text-white">
+                Discover Feed
+              </Link>
+              <Link to={ROUTES.ABOUT} className="transition-colors hover:text-white">
+                About us
+              </Link>
+              <Link to={ROUTES.CONTACT} className="transition-colors hover:text-white">
+                Contact
+              </Link>
             </div>
           </nav>
 

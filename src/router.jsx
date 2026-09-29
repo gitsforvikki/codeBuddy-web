@@ -13,6 +13,9 @@ import { RequestPage } from "./components/connections/Requests";
 import { ResetPassword } from "./components/auth/ResetPassword";
 import { ChatPage } from "./components/chat/Chat";
 import { Membership } from "./components/membership/Membership";
+import { AboutPage } from "./components/pages/About";
+import { ContactPage } from "./components/pages/Contact";
+import { NotFoundPage } from "./components/pages/NotFound";
 import { ROUTES } from "./utils/routes";
 
 export const router = createBrowserRouter([
@@ -20,7 +23,7 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      // 🌐 Public (Guest-only) routes
+      // 🌐 Public (Guest-only auth) routes
       {
         element: <PublicLayout />,
         children: [
@@ -28,6 +31,11 @@ export const router = createBrowserRouter([
           { path: ROUTES.SIGNUP, element: <RegisterPage /> },
         ],
       },
+
+      // 🌍 General Informational routes (Accessible to both guests & authenticated users)
+      { path: ROUTES.ABOUT, element: <AboutPage /> },
+      { path: ROUTES.CONTACT, element: <ContactPage /> },
+      { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> },
 
       // 🔒 Private (Authenticated-only) routes
       {
@@ -46,9 +54,10 @@ export const router = createBrowserRouter([
       // ❓ Catch-all 404 route
       {
         path: "*",
-        element: <ErrorPage />,
+        element: <NotFoundPage />,
       },
     ],
   },
 ]);
+
 

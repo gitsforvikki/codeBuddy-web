@@ -8,6 +8,9 @@ export const ROUTES = {
   RESET_PASSWORD: "/reset-password",
   CHAT: (userId = ":withUserId") => `/chat/${userId}`,
   PREMIUM: "/premium",
+  ABOUT: "/about",
+  CONTACT: "/contact",
+  NOT_FOUND: "/404",
 };
 
 export const DEFAULT_LOGIN_REDIRECT = ROUTES.HOME;
