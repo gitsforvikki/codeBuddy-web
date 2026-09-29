@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { registerUser } from "../../redux/users/userReducer";
+import { ROUTES } from "../../utils/routes";
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const searchParams = new URLSearchParams(location.search);
+  const callbackUrl = searchParams.get("callbackUrl");
 
   const handleRegister = () => {
     dispatch(registerUser({ firstName, lastName, email, password }));
@@ -18,9 +23,12 @@ export const RegisterPage = () => {
 
   useEffect(() => {
     if (success) {
-      navigate("/login");
+      const loginTarget = callbackUrl
+        ? `${ROUTES.LOGIN}?callbackUrl=${encodeURIComponent(callbackUrl)}`
+        : ROUTES.LOGIN;
+      navigate(loginTarget);
     }
-  }, [success]);
+  }, [success, callbackUrl, navigate]);
 
   return (
     <div className="min-h-[calc(100vh-200px)] overflow-hidden bg-[#f0f4f1] px-4 py-8 sm:px-6 md:py-14">
@@ -200,7 +208,7 @@ export const RegisterPage = () => {
               Already part of the circle?
             </p>
             <Link
-              to="/login"
+              to={callbackUrl ? `${ROUTES.LOGIN}?callbackUrl=${encodeURIComponent(callbackUrl)}` : ROUTES.LOGIN}
               className="font-bold text-(--connections-blue) transition-colors hover:text-(--connections-coral)"
             >
               Sign in <span aria-hidden="true">→</span>

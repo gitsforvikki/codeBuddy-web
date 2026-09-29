@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/users/userReducer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { ROUTES, sanitizeCallbackUrl } from "../../utils/routes";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const { user, error } = useSelector((state) => state.user);
+
+  const searchParams = new URLSearchParams(location.search);
+  const rawCallback =
+    searchParams.get("callbackUrl") || location.state?.from?.pathname;
+  const redirectTarget = sanitizeCallbackUrl(rawCallback, ROUTES.HOME);
 
   const handleLoginReqest = () => {
     if (user) return;
@@ -20,9 +27,9 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate(redirectTarget, { replace: true });
     }
-  }, [navigate, user]);
+  }, [navigate, user, redirectTarget]);
 
   return (
     <div className="min-h-[calc(100vh-200px)] bg-(--connections-cream) px-4 py-8 sm:px-6 md:py-14">
@@ -210,7 +217,7 @@ export const LoginPage = () => {
                     curiosity.
                   </p>
                   <Link
-                    to="/signup"
+                    to={rawCallback ? `${ROUTES.SIGNUP}?callbackUrl=${encodeURIComponent(rawCallback)}` : ROUTES.SIGNUP}
                     className="mt-3 inline-flex text-sm font-bold text-(--connections-blue) transition-colors hover:text-(--connections-coral)"
                   >
                     Create an account{" "}

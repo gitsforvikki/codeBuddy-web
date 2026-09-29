@@ -13,22 +13,23 @@ import { RequestPage } from "./components/connections/Requests";
 import { ResetPassword } from "./components/auth/ResetPassword";
 import { ChatPage } from "./components/chat/Chat";
 import { Membership } from "./components/membership/Membership";
+import { ROUTES } from "./utils/routes";
 
 export const router = createBrowserRouter([
   {
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      // 🌐 Public routes
+      // 🌐 Public (Guest-only) routes
       {
         element: <PublicLayout />,
         children: [
-          { path: "/login", element: <LoginPage /> },
-          { path: "/signup", element: <RegisterPage /> },
+          { path: ROUTES.LOGIN, element: <LoginPage /> },
+          { path: ROUTES.SIGNUP, element: <RegisterPage /> },
         ],
       },
 
-      // 🔒 Private routes
+      // 🔒 Private (Authenticated-only) routes
       {
         element: <ProtectedLayout />,
         children: [
@@ -41,6 +42,13 @@ export const router = createBrowserRouter([
           { path: "premium", element: <Membership /> },
         ],
       },
+
+      // ❓ Catch-all 404 route
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
     ],
   },
 ]);
+

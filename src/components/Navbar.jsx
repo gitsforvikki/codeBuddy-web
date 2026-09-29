@@ -196,6 +196,23 @@ const Navbar = () => {
                 </div>
               </>
             )}
+
+            {!user && (
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Link
+                  to="/login"
+                  className="rounded-xl px-3 py-2 text-sm font-bold text-(--connections-ink) transition-colors hover:bg-[#f5e7df] hover:text-(--connections-coral) sm:px-4"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  to="/signup"
+                  className="rounded-xl bg-(--connections-coral) px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#9f3829] sm:px-4"
+                >
+                  Join now
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
