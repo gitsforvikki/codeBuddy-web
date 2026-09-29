@@ -46,6 +46,7 @@ export const router = createBrowserRouter([
           { path: "connections", element: <Connections /> },
           { path: "requests", element: <RequestPage /> },
           { path: "reset-password", element: <ResetPassword /> },
+          { path: "chat", element: <ChatPage /> },
           { path: "chat/:withUserId", element: <ChatPage /> },
           { path: "premium", element: <Membership /> },
         ],

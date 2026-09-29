@@ -98,6 +98,12 @@ const Navbar = () => {
                 Requests
               </Link>
               <Link
+                to="/chat"
+                className="rounded-xl px-3 py-2 text-sm font-bold text-(--connections-muted) transition-colors hover:bg-[#f5e7df] hover:text-(--connections-coral)"
+              >
+                Messages
+              </Link>
+              <Link
                 to="/premium"
                 className="ml-2 rounded-xl bg-(--connections-ink) px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-(--connections-blue)"
               >
@@ -175,6 +181,13 @@ const Navbar = () => {
                           className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
                         >
                           📥 Requests
+                        </Link>
+                        <Link
+                          to="/chat"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="rounded-xl px-3 py-2.5 text-sm font-bold text-(--connections-ink) hover:bg-[#f5e7df]"
+                        >
+                          💬 Messages
                         </Link>
                         <Link
                           to="/reset-password"
