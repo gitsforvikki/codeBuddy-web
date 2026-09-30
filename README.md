@@ -1,18 +1,66 @@
-# React + Vite
+# 🚀 CodeBuddy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**CodeBuddy** is a full-stack developer networking and collaboration platform built for developers to connect, communicate, and collaborate with other developers based on their interests, skills, and profiles. 
 
-Currently, two official plugins are available:
+The platform includes secure authentication, developer discovery, connection requests, real-time chat, premium features, and Razorpay payment integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌐 Live Demo
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+*   🔗 **Live Application:** [https://codebuddydev.vercel.app](https://codebuddydev.vercel.app)
+*   🔗 **Backend API:** [https://onrender.com](https://onrender.com)
 
-Note: This will impact Vite dev & build performances.
+*Note: The application is deployed with a separate frontend and backend architecture.*
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Overview
+
+CodeBuddy provides a platform where developers can:
+*   👨‍💻 **Profiles:** Create and manage developer profiles
+*   🔍 **Discovery:** Discover other developers
+*   🤝 **Networking:** Send and manage connection requests
+*   💬 **Chat:** Communicate through real-time chat
+*   🔔 **Alerts:** Receive notifications
+*   💎 **Premium:** Access premium features
+*   💳 **Payments:** Make secure payments using Razorpay
+*   🔐 **Security:** Authenticate securely using HTTP-only cookies
+
+---
+
+## ✨ Features
+
+### 👤 Authentication & Authorization
+*   User registration and login
+*   Secure password hashing using bcrypt
+*   JWT-based authentication
+*   HTTP-only authentication cookies
+*   Protected routes
+*   Authentication state restoration
+*   Server-side authorization
+*   Logout functionality
+*   Secure cookie configuration for production
+
+### 👨‍💻 Developer Profiles
+Users can create and manage their developer profiles with information such as:
+*   Name
+*   Profile photo
+*   Skills
+*   About
+*   Gender
+*   Age
+*   Experience
+*   Developer interests
+
+*Profiles can be used to discover and connect with other developers.*
+
+### 🤝 Connection System
+Developers can interact with other developers through connection requests. Supported actions include:
+*   Send connection request
+*   Accept request
+*   Reject request
+*   View received requests
+*   View accepted connections
+*   Prevent duplicate requests
+*   Validate request ownership on the server
