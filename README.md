@@ -1,17 +1,8 @@
 # 🚀 CodeBuddy
 
-**CodeBuddy** is a full-stack developer networking and collaboration platform built for developers to connect, communicate, and collaborate with other developers based on their interests, skills, and profiles. 
+Backend API for **CodeBuddy**, a developer networking and collaboration platform.
 
-The platform includes secure authentication, developer discovery, connection requests, real-time chat, premium features, and Razorpay payment integration.
-
----
-
-## 🌐 Live Demo
-
-*   🔗 **Live Application:** [https://codebuddydev.vercel.app](https://codebuddydev.vercel.app)
-*   🔗 **Backend API:** [https://onrender.com](https://onrender.com)
-
-*Note: The application is deployed with a separate frontend and backend architecture.*
+Built with **Node.js, Express.js, MongoDB, Socket.IO, JWT, and Razorpay**.
 
 ---
 
@@ -29,38 +20,169 @@ CodeBuddy provides a platform where developers can:
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-### 👤 Authentication & Authorization
-*   User registration and login
-*   Secure password hashing using bcrypt
-*   JWT-based authentication
-*   HTTP-only authentication cookies
-*   Protected routes
-*   Authentication state restoration
-*   Server-side authorization
-*   Logout functionality
-*   Secure cookie configuration for production
+*   User authentication with JWT
+*   Secure HTTP-only cookie authentication
+*   Developer profiles and profile updates
+*   Developer feed with pagination
+*   Connection requests
+*   Real-time chat using Socket.IO
+*   Razorpay premium payment integration
+*   Email notifications
+*   Centralized error handling
+*   API validation and authorization
+*   CORS configuration for frontend integration
 
-### 👨‍💻 Developer Profiles
-Users can create and manage their developer profiles with information such as:
-*   Name
-*   Profile photo
-*   Skills
-*   About
-*   Gender
-*   Age
-*   Experience
-*   Developer interests
+---
 
-*Profiles can be used to discover and connect with other developers.*
+## 🛠️ Tech Stack
 
-### 🤝 Connection System
-Developers can interact with other developers through connection requests. Supported actions include:
-*   Send connection request
-*   Accept request
-*   Reject request
-*   View received requests
-*   View accepted connections
-*   Prevent duplicate requests
-*   Validate request ownership on the server
+*   **Node.js**
+*   **Express.js**
+*   **MongoDB + Mongoose**
+*   **Socket.IO**
+*   **JWT**
+*   **bcrypt**
+*   **Razorpay**
+*   **Brevo**
+*   **Docker**
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+PORT=3000
+
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+FRONTEND_URL=http://localhost:5173
+LOCAL_HOST=http://localhost:5173
+
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
+BREVO_API_KEY=your_brevo_api_key
+```
+
+> ⚠️ **Important:** Never commit your `.env` file or expose secret keys in the repository.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone <repository-url>
+cd codebuddy-backend
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+Create `.env` and add the required variables.
+
+### 4. Start the development server
+```bash
+npm run dev
+```
+
+The backend will run on:
+```text
+http://localhost:3000
+```
+
+---
+
+## 🔐 Authentication
+
+CodeBuddy uses **JWT-based authentication** with HTTP-only cookies.
+
+**Authentication flow:**
+```text
+Login / Signup
+      ↓
+JWT generated
+      ↓
+HTTP-only Cookie
+      ↓
+Authenticated API Requests
+```
+
+*Note: Passwords are hashed using **bcrypt** before being stored in MongoDB.*
+
+---
+
+## 💳 Payment
+
+CodeBuddy uses **Razorpay** for premium membership payments.
+
+**Payment flow:**
+```text
+Frontend
+   ↓
+Create Payment Order
+   ↓
+Backend
+   ↓
+Razorpay
+   ↓
+Payment
+   ↓
+Payment Verification
+   ↓
+Premium Membership
+```
+
+*Note: Payment credentials are kept server-side and are never exposed through the frontend.*
+
+---
+
+## 💬 Real-Time Chat
+
+Real-time messaging is implemented using **Socket.IO**.
+
+```text
+User A
+  ↕
+Socket.IO Server
+  ↕
+User B
+```
+
+---
+
+## 📡 Main API Routes
+
+| Route | Purpose |
+| :--- | :--- |
+| `/auth` | Signup, login, logout |
+| `/user` | User-related operations |
+| `/profile` | Profile management |
+| `/request` | Connection requests |
+| `/payment` | Razorpay payment operations |
+
+---
+
+## 🐳 Docker
+
+The backend can also be containerized using Docker.
+
+```bash
+docker build -t codebuddy-backend .
+docker run -p 3000:3000 codebuddy-backend
+```
+
+---
+
+## 📄 License
+
+This project is built for learning, portfolio, and demonstration purposes.
+
